@@ -1,52 +1,281 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏪 Système de Gestion de Vente et Stock
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Une application web complète développée avec Laravel pour la gestion des ventes, du stock et des statistiques commerciales.
 
-## About Laravel
+## 📋 Table des matières
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [À propos](#à-propos)
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies utilisées](#technologies-utilisées)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Utilisation](#utilisation)
+- [Structure du projet](#structure-du-projet)
+- [Développement](#développement)
+- [Tests](#tests)
+- [Déploiement](#déploiement)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 À propos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Cette application permet de gérer efficacement :
+- **Gestion des produits** : Ajout, modification, suppression et suivi du stock
+- **Gestion des catégories** : Organisation des produits par catégories
+- **Gestion des ventes** : Enregistrement des transactions et génération de factures
+- **Statistiques** : Tableaux de bord et analyses des performances
+- **Utilisateurs** : Système d'authentification et gestion des profils
 
-## Learning Laravel
+## ✨ Fonctionnalités
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🔐 Authentification et Sécurité
+- Inscription et connexion sécurisée
+- Vérification par email
+- Réinitialisation de mot de passe
+- Gestion des sessions
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 📦 Gestion des Produits
+- Création et édition de produits
+- Gestion des stocks (quantités, alertes de stock bas)
+- Organisation par catégories
+- Recherche et filtrage
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛒 Gestion des Ventes
+- Création de ventes avec plusieurs articles
+- Calcul automatique des totaux
+- Génération de factures PDF
+- Historique des transactions
 
-## Laravel Sponsors
+### 📊 Statistiques et Rapports
+- Tableau de bord avec indicateurs clés
+- Analyse des ventes par période
+- Rapports de performance
+- Alertes de stock bas
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠 Technologies utilisées
 
-### Premium Partners
+### Backend
+- **Laravel 10+** - Framework PHP
+- **Eloquent ORM** - Gestion de base de données
+- **MySQL** - Base de données principale
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Frontend
+- **Blade** - Templating engine
+- **Tailwind CSS** - Framework CSS
+- **Vite** - Build tool
+- **JavaScript** - Interactivité
 
-## Contributing
+### Outils
+- **Dompdf** - Génération de PDF
+- **PHPUnit** - Tests unitaires
+- **Composer** - Gestion des dépendances
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Installation
+
+### Prérequis
+- PHP 8.1 ou supérieur
+- Composer
+- MySQL 5.7+ ou MariaDB 10.2+
+- Node.js et npm
+
+### Étapes d'installation
+
+1. **Cloner le dépôt**
+   ```bash
+   git clone https://github.com/mouhamedsouleymane/gestion-de-stock.git
+   cd gestion-de-stock
+   ```
+
+2. **Installer les dépendances PHP**
+   ```bash
+   composer install
+   ```
+
+3. **Installer les dépendances JavaScript**
+   ```bash
+   npm install
+   ```
+
+4. **Configurer l'environnement**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Configurer la base de données**
+   - Créer une base de données MySQL
+   - Modifier le fichier `.env` :
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nom_de_votre_base
+   DB_USERNAME=votre_utilisateur
+   DB_PASSWORD=votre_mot_de_passe
+   ```
+
+6. **Exécuter les migrations et seeders**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+7. **Compiler les assets**
+   ```bash
+   npm run build
+   ```
+
+8. **Démarrer le serveur**
+   ```bash
+   php artisan serve
+   ```
+
+## ⚙️ Configuration
+
+### Variables d'environnement importantes
+
+```env
+APP_NAME="Gestion de Vente et Stock"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# Configuration email (pour les vérifications)
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+## 📖 Utilisation
+
+### Premier accès
+1. Accédez à l'application via `http://localhost:8000`
+2. Créez un compte utilisateur
+3. Connectez-vous avec vos identifiants
+4. Commencez à gérer vos produits et ventes
+
+### Fonctionnalités principales
+
+#### Gestion des produits
+- Naviguez vers "Produits" dans le menu
+- Ajoutez de nouveaux produits avec nom, prix, quantité et catégorie
+- Modifiez les informations existantes
+- Consultez les alertes de stock bas
+
+#### Gestion des ventes
+- Accédez à "Ventes" pour créer une nouvelle vente
+- Sélectionnez les produits et quantités
+- Le système calcule automatiquement le total
+- Générez des factures PDF
+
+#### Statistiques
+- Le tableau de bord affiche les indicateurs clés
+- Consultez les performances par période
+- Surveillez les tendances des ventes
+
+## 📁 Structure du projet
+
+```
+app/
+├── Http/
+│   ├── Controllers/          # Contrôleurs MVC
+│   └── Requests/            # Validation des formulaires
+├── Models/                  # Modèles Eloquent
+│   ├── Category.php
+│   ├── Product.php
+│   ├── Sale.php
+│   ├── SaleItem.php
+│   └── User.php
+└── View/Components/         # Composants Blade
+
+database/
+├── migrations/              # Migrations de base de données
+├── seeders/                 # Données initiales
+└── factories/               # Factories pour les tests
+
+resources/
+├── views/                   # Templates Blade
+│   ├── auth/               # Pages d'authentification
+│   ├── categories/         # Gestion des catégories
+│   ├── products/          # Gestion des produits
+│   ├── sales/             # Gestion des ventes
+│   └── statistics/        # Tableaux de bord
+└── js/                     # JavaScript
+
+public/                     # Assets publics
+routes/                     # Routes de l'application
+tests/                      # Tests unitaires et fonctionnels
+```
+
+## 🧪 Tests
+
+L'application inclut une suite de tests complète :
+
+### Tests d'authentification
+```bash
+php artisan test tests/Feature/Auth/
+```
+
+### Tests des fonctionnalités principales
+```bash
+php artisan test tests/Feature/
+```
+
+### Tests unitaires
+```bash
+php artisan test tests/Unit/
+```
+
+### Tous les tests
+```bash
+php artisan test
+```
+
+## 🚀 Déploiement
+
+### Développement local
+```bash
+php artisan serve
+npm run dev
+```
+
+### Production
+1. Configurer les variables d'environnement de production
+2. Exécuter `npm run build`
+3. Configurer un serveur web (Apache/Nginx)
+4. Configurer la base de données de production
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commiter les changements (`git commit -m 'Add AmazingFeature'`)
+4. Pousser la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 👥 Auteur
+
+**Mouhamed Souleymane**
+- GitHub: [@mouhamedsouleymane](https://github.com/mouhamedsouleymane)
+
+## 🙏 Remerciements
+
+- [Laravel](https://laravel.com) - Framework PHP
+- [Tailwind CSS](https://tailwindcss.com) - Framework CSS
+- [Dompdf](https://github.com/dompdf/dompdf) - Génération de PDF
+
+---
+
+**Version**: 1.0.0  
+**Dernière mise à jour**: Décembre 2025
 
 ## Code of Conduct
 
